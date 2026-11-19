@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Poster môi trường công trường: phân loại rác đúng thùng, quy trình và kỷ luật (song ngữ Việt–Anh).">
+<title>Môi trường công trường</title>
+<style>
+@page { size: 297mm 420mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --ink:#14211b; --muted:#4a5a52; --paper:#f7f5ee;
+  --green:#1f7a3f; --green-d:#0f4d27; --lime:#c7e86a;
+  --blue:#1565c0; --sh2:#2e8b3a; --black:#2b2b2b; --orange:#e8590c; --red:#c62828; --cw:#8d6e3f;
+}
+html,body{ background:#888; }
+body{ font-family:"Inter",sans-serif; color:var(--ink); }
+.page{ width:297mm; height:420mm; background:var(--paper); position:relative; overflow:hidden;
+  page-break-after:always; display:flex; flex-direction:column; }
+.page:last-child{ page-break-after:auto; }
+.en{ font-style:italic; font-weight:500; opacity:.82; }
+
+/* header */
+.hdr{ background:var(--green-d); color:#fff; padding:10mm 14mm 7mm; position:relative; }
+.hdr::after{ content:""; position:absolute; left:0; right:0; bottom:-6mm; height:6mm;
+  background:repeating-linear-gradient(-45deg,#f5c400 0 9mm,#14211b 9mm 18mm); }
+.kicker{ font-family:"Inter Display","Inter"; font-weight:700; letter-spacing:.18em; font-size:13pt; color:var(--lime); text-transform:uppercase; }
+.h1{ font-family:"Inter Display","Inter"; font-weight:900; font-size:41pt; line-height:1.02; max-width:225mm; letter-spacing:-.01em; margin-top:3mm; }
+.h1 .en{ display:block; font-size:19pt; font-weight:600; font-style:italic; margin-top:2.5mm; color:#d8f0c0; opacity:1; letter-spacing:0; }
+.lead{ margin-top:3.5mm; font-size:14pt; font-weight:600; max-width:230mm; line-height:1.3; }
+.lead .en{ display:block; font-size:11pt; font-weight:500; color:#cfe3d4; }
+.badge{ position:absolute; right:14mm; top:10mm; width:40mm; height:40mm; border-radius:50%;
+  background:var(--lime); color:var(--green-d); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+  font-weight:900; font-size:15pt; line-height:1.05; transform:rotate(8deg); border:2mm solid #fff; }
+.badge b{ font-size:30pt; }
+.badge small{ font-size:8.5pt; font-weight:600; font-style:italic; }
+
+.body{ flex:1; padding:11mm 14mm 0; display:flex; flex-direction:column; gap:5mm; }
+
+/* bins */
+.row{ display:grid; gap:6mm; }
+.r3{ grid-template-columns:repeat(3,1fr); }
+.r2{ grid-template-columns:1fr 1fr; }
+.bin{ background:#fff; border-radius:4mm; overflow:hidden; display:flex; flex-direction:column; border:0.6mm solid var(--c); }
+.bin .top{ background:var(--c); color:#fff; padding:3.5mm 5mm 3mm; position:relative; }
+.code{ display:inline-block; background:#fff; color:var(--c); font-weight:900; font-size:14pt; padding:.5mm 3mm; border-radius:2mm; }
+.ico{ position:absolute; right:4mm; top:3mm; font-size:30pt; line-height:1; }
+.bin h3{ font-family:"Inter Display","Inter"; font-weight:800; font-size:19pt; line-height:1.1; margin-top:2.5mm; }
+.bin h3 .en{ display:block; font-size:11pt; font-weight:500; margin-top:.8mm; }
+.bin .colr{ font-size:10.5pt; font-weight:700; margin-top:1.5mm; letter-spacing:.04em; text-transform:uppercase; opacity:.95; }
+.bin .in{ padding:3mm 5mm 3.5mm; display:flex; flex-direction:column; gap:2mm; flex:1; font-size:11.2pt; line-height:1.24; }
+.lbl{ font-size:9pt; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--c); }
+ul.items{ list-style:none; display:flex; flex-direction:column; gap:1mm; }
+ul.items li{ padding-left:5.5mm; position:relative; }
+ul.items li::before{ content:"✓"; position:absolute; left:0; color:var(--c); font-weight:900; }
+ul.items li .en{ font-size:9.5pt; display:block; }
+ol.steps{ list-style:none; counter-reset:s; display:flex; flex-direction:column; gap:1mm; }
+ol.steps li{ counter-increment:s; padding-left:7mm; position:relative; }
+ol.steps li::before{ content:counter(s); position:absolute; left:0; top:.2mm; width:5mm; height:5mm; border-radius:50%; background:var(--c); color:#fff; font-size:8.5pt; font-weight:800; display:flex; align-items:center; justify-content:center; }
+ol.steps li .en{ font-size:9.5pt; display:block; }
+.no{ margin-top:auto; background:#fdecea; border-left:1.6mm solid var(--red); padding:2.5mm 3.5mm; font-size:10.5pt; font-weight:600; color:#7a1414; border-radius:1.5mm; }
+.no .en{ display:block; font-size:9.3pt; font-weight:500; }
+
+.wide{ flex-direction:row; }
+.wide .top{ width:92mm; flex:none; display:flex; flex-direction:column; align-items:flex-start; }
+.wide .top .no{ margin-top:auto; padding-top:3mm; background:#fff; }
+.wide .in{ display:grid; grid-template-columns:1.15fr 1fr; gap:2mm 5mm; align-content:start; }
+
+
+.two{ display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+
+.alert{ background:var(--red); color:#fff; border-radius:4mm; padding:3mm 6mm; display:flex; gap:5mm; align-items:center; }
+.alert .big{ font-size:26pt; }
+.alert b{ font-size:13.5pt; display:block; }
+.alert .en{ font-size:10.5pt; display:block; }
+
+/* footer slogan */
+.slogan{ margin-top:auto; background:var(--green); color:#fff; padding:4.5mm 14mm; display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; text-align:center; }
+.slogan div{ font-family:"Inter Display","Inter"; font-weight:900; font-size:18pt; line-height:1.05; }
+.slogan div span{ display:block; font-size:10.5pt; font-weight:600; font-style:italic; color:var(--lime); margin-top:1mm; }
+.foot{ background:var(--ink); color:#b9c7bf; font-size:8.5pt; padding:3mm 14mm; display:flex; justify-content:space-between; }
+
+/* page 2 */
+.sec{ background:#fff; border-radius:4mm; padding:4mm 6mm; }
+.sec h2{ font-family:"Inter Display","Inter"; font-weight:900; font-size:19pt; color:var(--green-d); line-height:1.1; display:flex; align-items:baseline; gap:3mm; flex-wrap:wrap; }
+.sec h2 .en{ font-size:12pt; font-weight:600; color:var(--muted); }
+.flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:5mm; margin-top:3mm; }
+.step{ background:#eef6ef; border-radius:3mm; padding:4mm; position:relative; font-size:10.8pt; line-height:1.28; }
+.step:not(:last-child)::after{ content:"➜"; position:absolute; right:-5mm; top:9mm; font-size:15pt; color:var(--green); width:5mm; text-align:center; }
+.step .n{ width:11mm; height:11mm; border-radius:50%; background:var(--green); color:#fff; font-weight:900; font-size:17pt; display:flex; align-items:center; justify-content:center; }
+.step h4{ font-size:13pt; font-weight:800; margin-top:2.5mm; line-height:1.15; }
+.step h4 .en{ display:block; font-size:9.5pt; font-weight:500; }
+.who{ display:inline-block; margin:2mm 0 1.5mm; background:var(--green-d); color:#fff; font-size:8.8pt; font-weight:700; padding:.6mm 2.2mm; border-radius:1.5mm; }
+.step p .en{ display:block; font-size:9.3pt; margin-top:.8mm; }
+
+.six{ display:grid; grid-template-columns:1fr 1fr; gap:2.5mm 6mm; margin-top:3mm; }
+.pt{ display:flex; gap:3.5mm; align-items:flex-start; font-size:11.8pt; line-height:1.28; font-weight:600; }
+.pt .k{ flex:none; width:10mm; height:10mm; border-radius:2.5mm; background:var(--lime); color:var(--green-d); font-weight:900; font-size:16pt; display:flex; align-items:center; justify-content:center; }
+.pt .en{ display:block; font-size:9.6pt; font-weight:500; }
+
+.grid2{ display:grid; grid-template-columns:1.08fr 1fr; gap:6mm; }
+table{ width:100%; border-collapse:collapse; margin-top:3.5mm; font-size:10.4pt; line-height:1.25; }
+td{ padding:1.7mm 2mm; border-bottom:.3mm solid #e2e6e3; vertical-align:top; }
+td .en{ display:block; font-size:8.8pt; }
+td.m{ white-space:nowrap; font-weight:900; color:var(--red); text-align:right; font-size:11.5pt; }
+td.m small{ display:block; color:var(--muted); font-weight:500; font-size:8pt; }
+.note{ font-size:9.5pt; color:var(--muted); margin-top:2.5mm; }
+
+.lv{ display:flex; flex-direction:column; gap:2mm; margin-top:3.5mm; }
+.l{ display:grid; grid-template-columns:12mm 1fr; gap:3mm; font-size:10.2pt; line-height:1.25; }
+.l .tag{ border-radius:2mm; color:#fff; font-weight:900; font-size:16pt; display:flex; align-items:center; justify-content:center; }
+.l b{ font-size:11pt; }
+.l .en{ display:block; font-size:8.8pt; }
+
+.stage{ display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; margin-top:3mm; }
+.st{ background:#f2f4f1; border-radius:3mm; padding:3.5mm; text-align:center; font-size:10.3pt; line-height:1.25; font-weight:600; }
+.st .v{ font-family:"Inter Display","Inter"; font-size:22pt; font-weight:900; color:var(--green-d); line-height:1; }
+.st .e{ font-size:20pt; line-height:1; }
+.st .en{ display:block; font-size:8.8pt; font-weight:500; }
+
+/* ---------- screen ---------- */
+@media screen{
+  html,body{ background:#d9ddd6; }
+  body{ padding:16px 0 40px; }
+  .page{ margin:0 auto 20px; box-shadow:0 4px 24px rgba(0,0,0,.18); }
+  .dl{ max-width:297mm; margin:0 auto 16px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center; font-family:"Be Vietnam Pro","Inter",sans-serif; }
+  .dl a{ background:#0f4d27; color:#fff; text-decoration:none; font-weight:700; padding:10px 18px; border-radius:999px; font-size:15px; }
+}
+@media print{ .dl{ display:none; } }
+/* ---------- phone / tablet ---------- */
+@media screen and (max-width: 1140px){
+  body{ padding:12px 0 32px; }
+  .page{ width:auto; height:auto; margin:0 12px 16px; border-radius:10px; }
+  .hdr{ padding:20px 16px 18px; }
+  .hdr::after{ height:10px; bottom:-10px; background:repeating-linear-gradient(-45deg,#f5c400 0 16px,#14211b 16px 32px); }
+  .kicker{ font-size:11px; }
+  .h1{ font-size:clamp(26px,7vw,48px); max-width:none; }
+  .h1 .en{ font-size:clamp(15px,3.6vw,22px); }
+  .lead{ font-size:16px; } .lead .en{ font-size:14px; }
+  .badge{ position:static; transform:none; width:auto; height:auto; border-radius:12px; border-width:3px; margin-top:14px; flex-direction:row; gap:8px; padding:8px 14px; font-size:15px; display:inline-flex; }
+  .badge b{ font-size:22px; } .badge br{ display:none; } .badge small{ font-size:12px; }
+  .body{ padding:24px 12px 0; gap:14px; }
+  .row.r3{ grid-template-columns:1fr; gap:14px; }
+  .bin{ border-width:2px; border-radius:10px; }
+  .bin .top{ padding:14px 16px 12px; }
+  .code{ font-size:16px; padding:2px 10px; border-radius:6px; }
+  .ico{ font-size:34px; right:14px; top:10px; }
+  .bin h3{ font-size:22px; } .bin h3 .en{ font-size:14px; }
+  .bin .colr{ font-size:12px; }
+  .bin .in{ padding:12px 16px 14px; font-size:16px; gap:8px; }
+  .lbl{ font-size:12px; }
+  ul.items li .en, ol.steps li .en{ font-size:13px; }
+  ul.items li{ padding-left:22px; } ol.steps li{ padding-left:28px; }
+  ol.steps li::before{ width:20px; height:20px; font-size:12px; }
+  .no{ font-size:14px; padding:8px 12px; border-left-width:5px; } .no .en{ font-size:13px; }
+  .wide{ flex-direction:column; } .wide .top{ width:auto; } .wide .top .no{ width:100%; margin-top:10px; padding-top:8px; }
+  .wide .in{ grid-template-columns:1fr; gap:8px; }
+  .alert{ border-radius:10px; padding:12px 14px; gap:12px; } .alert .big{ font-size:30px; } .alert b{ font-size:16px; } .alert .en{ font-size:13px; }
+  .slogan{ grid-template-columns:1fr 1fr; padding:16px; gap:12px; margin-top:16px !important; border-radius:0; }
+  .slogan div{ font-size:20px; } .slogan div span{ font-size:13px; }
+  .foot{ flex-direction:column; gap:4px; font-size:11px; padding:10px 16px; border-radius:0 0 10px 10px; }
+  .sec{ padding:16px; border-radius:10px; }
+  .sec h2{ font-size:22px; } .sec h2 .en{ font-size:14px; }
+  .flow{ grid-template-columns:1fr; gap:22px; margin-top:12px; }
+  .step{ padding:14px; font-size:15px; border-radius:8px; }
+  .step:not(:last-child)::after{ content:"⬇"; right:auto; left:50%; top:auto; bottom:-22px; transform:translateX(-50%); font-size:18px; width:auto; }
+  .step .n{ width:40px; height:40px; font-size:20px; }
+  .step h4{ font-size:18px; } .step h4 .en{ font-size:13px; }
+  .who{ font-size:12px; padding:2px 8px; border-radius:6px; margin:8px 0 6px; }
+  .step p .en{ font-size:13px; }
+  .six{ grid-template-columns:1fr; gap:12px; }
+  .pt{ font-size:16px; gap:12px; } .pt .k{ width:36px; height:36px; font-size:18px; border-radius:8px; } .pt .en{ font-size:13px; }
+  .grid2{ grid-template-columns:1fr; gap:14px; }
+  table{ font-size:15px; } td{ padding:8px 4px; } td .en{ font-size:12.5px; } td.m{ font-size:16px; } td.m small{ font-size:11px; }
+  .note{ font-size:13px; }
+  .l{ grid-template-columns:40px 1fr; gap:10px; font-size:15px; } .l .tag{ font-size:18px; border-radius:8px; } .l b{ font-size:15px; } .l .en{ font-size:12.5px; }
+  .lv{ gap:10px; }
+}
+</style>
+</head>
+<body>
+<nav class="dl"><a href="Poster_MoiTruong_CongTruong_A3.pdf" download>⬇ Tải PDF in A3 · Download PDF</a></nav>
+
+<!-- ================= PAGE 1 ================= -->
+<section class="page">
+  <header class="hdr">
+    <div class="kicker">Tuyến Metro số 2 · An toàn – Môi trường (HSE)</div>
+    <div class="h1">PHÂN LOẠI RÁC ĐÚNG THÙNG<br>NGAY TẠI NGUỒN
+      <span class="en">Segregate waste into the right bin, right where it is generated</span></div>
+    <div class="lead">Mỗi công nhân là người giữ sạch công trường. Ăn xong, làm xong – bỏ rác đúng thùng ngay!
+      <span class="en">Every worker keeps the site clean. After eating or finishing work, put waste in the right bin straight away.</span></div>
+    <div class="badge"><b>5</b>NHÓM <br>CHẤT THẢI<small>5 waste groups</small></div>
+  </header>
+
+  <div class="body">
+    <div class="row r3">
+      <!-- SH-01 -->
+      <div class="bin" style="--c:var(--blue)">
+        <div class="top"><span class="code">SH-01</span><span class="ico">♻️</span>
+          <h3>Tái chế, tái sử dụng<span class="en">Recyclable &amp; reusable</span></h3>
+          <div class="colr">■ Thùng XANH DƯƠNG · Blue bin</div></div>
+        <div class="in">
+          <div class="lbl">Bỏ vào · Put in</div>
+          <ul class="items">
+            <li>Chai nhựa PET đựng nước<span class="en">PET water bottles</span></li>
+            <li>Lon nhôm, lon sắt<span class="en">Aluminium / steel cans</span></li>
+            <li>Thùng carton, giấy văn phòng<span class="en">Cardboard, office paper</span></li>
+            <li>Bao bì nhựa SẠCH, không dầu mỡ<span class="en">CLEAN plastic packaging</span></li>
+          </ul>
+          <div class="lbl">Cách làm · How</div>
+          <ol class="steps">
+            <li>Đổ hết nước thừa, tráng sơ<span class="en">Empty all liquid, rinse</span></li>
+            <li>Bóp dẹp chai, lon · xếp gọn carton<span class="en">Flatten bottles &amp; cans, stack cardboard</span></li>
+          </ol>
+          <div class="no">✕ Không còn nước, thức ăn, giẻ dầu<span class="en">No liquid, food or oily rags</span></div>
+        </div>
+      </div>
+      <!-- SH-02 -->
+      <div class="bin" style="--c:var(--sh2)">
+        <div class="top"><span class="code">SH-02</span><span class="ico">🍚</span>
+          <h3>Thực phẩm thừa<span class="en">Food waste</span></h3>
+          <div class="colr">■ Thùng XANH LÁ · Green bin</div></div>
+        <div class="in">
+          <div class="lbl">Bỏ vào · Put in</div>
+          <ul class="items">
+            <li>Cơm, thức ăn thừa sau ca<span class="en">Leftover rice &amp; food</span></li>
+            <li>Rau, củ, quả hỏng · vỏ trái cây<span class="en">Spoiled vegetables, fruit peels</span></li>
+            <li>Bã trà, bã cà phê<span class="en">Tea &amp; coffee grounds</span></li>
+          </ul>
+          <div class="lbl">Cách làm · How</div>
+          <ol class="steps">
+            <li>Chắt nước canh vào hệ thống nước thải<span class="en">Drain broth into the wastewater system</span></li>
+            <li>Nhặt riêng hộp xốp, ni-lông, muỗng, đũa, tăm<span class="en">Remove foam boxes, bags, spoons, sticks</span></li>
+            <li>Dùng túi sinh học màu xanh<span class="en">Use green biodegradable bags</span></li>
+          </ol>
+          <div class="no">✕ Không lẫn hộp xốp, ni-lông, muỗng, đũa<span class="en">No foam, bags, spoons, chopsticks</span></div>
+        </div>
+      </div>
+      <!-- SH-03 -->
+      <div class="bin" style="--c:var(--black)">
+        <div class="top"><span class="code">SH-03</span><span class="ico">🗑️</span>
+          <h3>Rác sinh hoạt khác<span class="en">Other domestic waste</span></h3>
+          <div class="colr">■ Thùng ĐEN / XÁM · Black bin</div></div>
+        <div class="in">
+          <div class="lbl">Bỏ vào · Put in</div>
+          <ul class="items">
+            <li>Túi ni-lông bẩn, ly nhựa dùng 1 lần<span class="en">Dirty bags, single-use cups</span></li>
+            <li>Hộp xốp dính dầu mỡ<span class="en">Greasy foam meal boxes</span></li>
+            <li>Khẩu trang thường, giấy vệ sinh<span class="en">Face masks, tissues</span></li>
+            <li>Thủy tinh, sành sứ vỡ (sạch hóa chất)<span class="en">Broken glass / ceramics, chemical-free</span></li>
+          </ul>
+          <div class="lbl">Cách làm · How</div>
+          <ol class="steps">
+            <li>Vật sắc nhọn: gói kỹ giấy dày / hộp cứng<span class="en">Wrap sharp objects securely</span></li>
+            <li>Đầy 80% là buộc chặt miệng túi<span class="en">Tie the bag tightly at 80% full</span></li>
+          </ol>
+          <div class="no">✕ Không lẫn chất thải nguy hại<span class="en">No hazardous waste</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="grid-template-columns:1fr">
+      <!-- HW -->
+      <div class="bin wide" style="--c:var(--orange)">
+        <div class="top"><span class="code">HW</span><span class="ico">☣️</span>
+          <h3>Chất thải nguy hại (CTNH)<span class="en">Hazardous waste</span></h3>
+          <div class="colr">■ Phuy CAM · Orange drum</div><div class="no">⚠ TUYỆT ĐỐI KHÔNG bỏ vào thùng SH-01, SH-02, SH-03<span class="en">NEVER put into domestic bins: serious violation</span></div></div>
+        <div class="in">
+          
+            <div><div class="lbl">Gồm · Includes</div>
+            <ul class="items">
+              <li>Dầu thải máy đào, cẩu, TBM<span class="en">Waste oil</span></li>
+              <li>Vỏ thùng sơn, phụ gia, hóa chất chống thấm<span class="en">Paint &amp; chemical containers</span></li>
+              <li>Bóng đèn huỳnh quang, pin, ắc quy<span class="en">Fluorescent bulbs, batteries</span></li>
+              <li>Giẻ lau, găng tay dính dầu / dung môi<span class="en">Oily / solvent rags &amp; gloves</span></li>
+              <li>Que hàn thừa, hộp mực máy in<span class="en">Welding stubs, printer cartridges</span></li>
+            </ul></div>
+            <div><div class="lbl">Lưu giữ · Store</div>
+            <ul class="items">
+              <li>Phân loại theo từng mã CTNH<span class="en">Separate by HW code</span></li>
+              <li>Phuy CAM có nắp đậy kín<span class="en">Orange drums, tight lids</span></li>
+              <li>Đặt trên khay chống tràn<span class="en">On spill containment trays</span></li>
+              <li>Tại kho CTNH tạm, có bình chữa cháy<span class="en">In HW store with extinguisher</span></li>
+            </ul></div>
+          
+        </div>
+      </div>
+      <!-- CW -->
+      <div class="bin wide" style="--c:var(--cw)">
+        <div class="top"><span class="code">CW</span><span class="ico">🧱</span>
+          <h3>Chất thải xây dựng, đất đào<span class="en">Construction waste, excavated soil</span></h3>
+          <div class="colr">■ Khu tập kết riêng · Dedicated area</div><div class="no">✕ Không đổ rác sinh hoạt vào khu tập kết CW<span class="en">No domestic waste in the CW area</span></div></div>
+        <div class="in">
+          
+            <div><div class="lbl">Gồm · Includes</div>
+            <ul class="items">
+              <li>Xà bần bê tông, gạch đá vỡ<span class="en">Concrete rubble, broken bricks</span></li>
+              <li>Đầu cọc, tường vây đục bỏ<span class="en">Pile &amp; D-wall debris</span></li>
+              <li>Sắt thép vụn, ván khuôn hỏng<span class="en">Scrap steel, damaged formwork</span></li>
+              <li>Vỏ bao xi măng · bentonite thải<span class="en">Cement bags, waste bentonite</span></li>
+              <li>Đất, bùn đào ga / hầm<span class="en">Excavated soil &amp; sludge</span></li>
+            </ul></div>
+            <div><div class="lbl">Xử lý · Handle</div>
+            <ul class="items">
+              <li>Có lưới chắn bụi, gờ chặn nước tràn<span class="en">Dust netting, runoff curbs</span></li>
+              <li>Thép, ván khuôn: tách riêng, tái sử dụng / thanh lý<span class="en">Steel &amp; formwork: reuse or sell</span></li>
+              <li>Bùn đất: làm ráo nước, xe chuyên dụng chở đến bãi được duyệt<span class="en">Dewater, haul to approved site</span></li>
+            </ul></div>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slogan" style="margin-top:5mm">
+    <div>ĐÚNG NGUỒN<span>Right source</span></div>
+    <div>ĐÚNG THÙNG<span>Right bin</span></div>
+    <div>ĐÚNG NƠI<span>Right place</span></div>
+    <div>ĐÚNG SỔ<span>Right records</span></div>
+  </div>
+  <div class="foot"><span></span><span>Trang 1/2</span></div>
+</section>
+
+<!-- ================= PAGE 2 ================= -->
+<section class="page">
+  <header class="hdr">
+    <div class="kicker">Tuyến Metro số 2 · An toàn – Môi trường (HSE)</div>
+    <div class="h1">GIỮ CÔNG TRƯỜNG SẠCH<br>LÀ TRÁCH NHIỆM CỦA TÔI
+      <span class="en">Keeping the site clean is my responsibility</span></div>
+    <div class="lead">Làm đúng quy trình mỗi ca. Vi phạm sẽ bị lập biên bản, phạt tiền và xử lý kỷ luật.
+      <span class="en">Follow the procedure every shift. Violations are recorded, fined and disciplined.</span></div>
+    <div class="badge"><b>90%</b>TUÂN THỦ <br>MỖI TUẦN<small>weekly compliance</small></div>
+  </header>
+
+  <div class="body">
+    <div class="sec">
+      <h2>4 bước mỗi ca làm việc <span class="en">4-step procedure every shift</span></h2>
+      <div class="flow">
+        <div class="step"><div class="n">1</div>
+          <h4>Phân loại tại nguồn<span class="en">Segregate at source</span></h4>
+          <span class="who">Mỗi người · Everyone</span>
+          <p>Ăn xong, làm xong: tự bỏ rác đúng thùng ngay tại khu vực làm việc.<span class="en">Put waste in the correct bin in your work area right away.</span></p></div>
+        <div class="step"><div class="n">2</div>
+          <h4>5S cuối ca<span class="en">End-of-shift 5S</span></h4>
+          <span class="who">Tổ trưởng · Team leader</span>
+          <p>15 phút trước khi hết ca: gom rác, chai nước, bao bì vật tư tại hố đào, sàn thao tác.<span class="en">15 min before shift end: clear waste from pits and platforms.</span></p></div>
+        <div class="step"><div class="n">3</div>
+          <h4>Thu gom, kiểm tra túi<span class="en">Collect &amp; check bags</span></h4>
+          <span class="who">Tạp vụ · Sanitation staff</span>
+          <p>Gom túi về điểm tập kết tạm của ga, kiểm tra túi buộc kín, phân loại đúng.<span class="en">Bring bags to the station staging point; check seals.</span></p></div>
+        <div class="step"><div class="n">4</div>
+          <h4>Bàn giao, ghi sổ<span class="en">Hand over &amp; log</span></h4>
+          <span class="who">Cán bộ môi trường · Env. officer</span>
+          <p>Giao đơn vị thu gom có phép, cân khối lượng, ghi sổ có chữ ký hai bên.<span class="en">Hand to licensed collector, weigh, log, both sign.</span></p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>6 điều bắt buộc phải nhớ <span class="en">6 mandatory points</span></h2>
+      <div class="six">
+        <div class="pt"><span class="k">1</span><div>Phân loại ngay tại nơi phát sinh: Xanh dương · Xanh lá · Đen<span class="en">Segregate at source: Blue · Green · Black</span></div></div>
+        <div class="pt"><span class="k">2</span><div>CTNH không bao giờ lẫn rác sinh hoạt: phuy cam, nắp kín, khay chống tràn<span class="en">HW never mixed: orange drum, tight lid, spill tray</span></div></div>
+        <div class="pt"><span class="k">3</span><div>CW đúng khu vực; thép, ván khuôn để riêng; bùn đất làm ráo nước<span class="en">CW in its area; steel &amp; formwork apart; soil dewatered</span></div></div>
+        <div class="pt"><span class="k">4</span><div>Túi SH-03 buộc chặt khi đầy 80%; vật sắc nhọn gói kỹ<span class="en">Tie SH-03 bags at 80%; wrap sharp objects</span></div></div>
+        <div class="pt"><span class="k">5</span><div>Điểm tập kết rác: cách khu ăn ≥ 10 m, có bình chữa cháy, không để quá 24 giờ, không chắn lối thoát hiểm<span class="en">Staging point ≥ 10 m from meal area, extinguisher, ≤ 24 h, exits kept clear</span></div></div>
+        <div class="pt"><span class="k">6</span><div>Mỗi lần bàn giao đều ghi sổ, có xác nhận hai bên<span class="en">Every handover logged and signed by both parties</span></div></div>
+      </div>
+    </div>
+
+    <div class="alert">
+      <div class="big">🚫</div>
+      <div><b>Thấy túi rác bị bỏ lẫn? Báo ngay cán bộ HSE khu vực. Tổ đội phát sinh phải phân loại lại.</b>
+      <span class="en">Found a mixed waste bag? Report to the area HSE officer at once. The crew that produced it must re-segregate.</span></div>
+    </div>
+
+    <div class="grid2">
+      <div class="sec">
+        <h2>Mức phạt hành chính <span class="en">Fines · Decree 45/2022/NĐ-CP</span></h2>
+        <table>
+          <tr><td>Không phân loại rác sinh hoạt, dùng sai thùng<span class="en">Not segregating, wrong containers</span></td><td class="m">0,5 – 1 tr<small>Khoản 1, Điều 26</small></td></tr>
+          <tr><td>Vứt, đổ rác sai nơi quy định trên công trường, văn phòng, quanh ga<span class="en">Dumping at non-designated places</span></td><td class="m">1 – 2 tr<small>Khoản 2, Điều 26</small></td></tr>
+          <tr><td>Tự chôn, lấp, đổ, đốt rác sinh hoạt trái quy định<span class="en">Burying, dumping or burning waste</span></td><td class="m">2 – 3 tr<small>Khoản 3, Điều 26</small></td></tr>
+          <tr><td>Để rác tồn đọng bốc mùi ảnh hưởng khu dân cư<span class="en">Waste left to smell near homes</span></td><td class="m">2 – 4 tr<small>Khoản 10, Điều 26</small></td></tr>
+          <tr><td>Vứt rác ra vỉa hè, lòng đường, cống thoát nước, kênh rạch<span class="en">Litter on streets, drains, canals</span></td><td class="m">3 – 7 tr<small>Khoản 8, 9, Điều 26</small></td></tr>
+        </table>
+        <div class="note">Đơn vị: triệu đồng (VND million). Mọi vi phạm đều bị lập Phiếu không phù hợp môi trường (NCR). <i>Every violation gets an Environmental NCR.</i></div>
+      </div>
+      <div class="sec">
+        <h2>Kỷ luật nội bộ <span class="en">Internal discipline</span></h2>
+        <div class="lv">
+          <div class="l"><span class="tag" style="background:#f5a623">1</span><div><b>Lần 1:</b> Nhắc nhở tại chỗ, tự dọn và phân loại lại trong 02 giờ.<span class="en">1st: warning, clean up &amp; re-segregate within 2 h.</span></div></div>
+          <div class="l"><span class="tag" style="background:#ef6c00">2</span><div><b>Lần 2:</b> Lập biên bản phạt HSE, trừ vào thanh toán của nhà thầu phụ, trừ điểm thi đua.<span class="en">2nd: HSE penalty, deducted from subcontractor payment.</span></div></div>
+          <div class="l"><span class="tag" style="background:#d84315">3</span><div><b>Lần 3 / vi phạm nghiêm trọng*:</b> Đình chỉ tổ đội để đào tạo lại HSE, khắc phục hậu quả, xem xét chấm dứt làm việc của CÁ NHÂN.<span class="en">3rd / serious*: crew suspended, retraining; individual may be removed.</span></div></div>
+          <div class="l"><span class="tag" style="background:#b71c1c">4</span><div><b>Lần 4 / nghiêm trọng lần 2*:</b> Đình chỉ, xem xét chấm dứt hợp đồng TỔ ĐỘI / NHÀ THẦU PHỤ.<span class="en">4th: crew / subcontractor may be terminated.</span></div></div>
+        </div>
+        <div class="note">* Nghiêm trọng: trộn CTNH vào rác sinh hoạt; đổ rác trái phép vào hệ thống thoát nước đô thị. <i>Serious: mixing HW into domestic waste; dumping into city drains.</i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slogan" style="margin-top:5mm">
+    <div>ĐÚNG NGUỒN<span>Right source</span></div>
+    <div>ĐÚNG THÙNG<span>Right bin</span></div>
+    <div>ĐÚNG NƠI<span>Right place</span></div>
+    <div>ĐÚNG SỔ<span>Right records</span></div>
+  </div>
+  <div class="foot"><span>Căn cứ: Luật BVMT 72/2020/QH14 · NĐ 08/2022/NĐ-CP · TT 02/2022/TT-BTNMT · NĐ 45/2022/NĐ-CP · CV 9368/BTNMT-KSONMT</span><span>Trang 2/2</span></div>
+</section>
+</body>
+</html>
